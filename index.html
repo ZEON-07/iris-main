@@ -16,7 +16,15 @@
     <div class="bg-orb" style="bottom: -10%; right: -10%; animation-delay: -5s;"></div>
     <div id="petals-container"></div>
 
-    <!-- Premium Header -->
+    <!-- Mobile Header -->
+    <header class="md:hidden fixed w-full z-50 px-6 py-4 flex justify-center">
+        <div
+            class="flex items-center justify-center premium-glass px-6 py-3 rounded-full border border-white/40 shadow-sm">
+            <img id="mobile-logo" src="./logos/iris-ceal-blue-main.png" alt="IRIS'26" class="h-7">
+        </div>
+    </header>
+
+    <!-- Premium Header (Desktop) -->
     <header class="hidden md:flex fixed w-full z-50 px-6 py-6 justify-center">
         <div
             class="container max-w-5xl flex justify-between items-center premium-glass px-8 py-3 rounded-full border border-white/40 shadow-sm transition-all duration-500 hover:shadow-lg">
@@ -34,14 +42,14 @@
 
             <!-- Logo only on Mobile -->
             <div class="md:hidden flex items-center">
-                <span class="text-[10px] font-bold tracking-[0.3em] text-[#BC002D]">IRIS'26</span>
+                <img src="./logos/iris-ceal-blue-main.png" alt="IRIS'26" class="h-7">
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <main>
-        <section class="min-h-screen flex items-center justify-center pt-20 px-8 relative overflow-hidden">
+        <section class="min-h-dvh flex items-center justify-center pt-40 px-8 relative overflow-hidden">
             <!-- Japanese Background Decor -->
             <div
                 class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none opacity-5">
@@ -164,9 +172,9 @@
                         <h2 class="text-4xl md:text-5xl mb-8 text-[#1A1A1A]">Reflection <br /><span
                                 class="text-[#BC002D] italic">of Excellence</span></h2>
                         <p class="text-lg text-gray-600 leading-relaxed mb-8">
-                            Experience a transformative three-day hybrid journey at MBITS Kothamangalam.
-                            IRIS 2026 brings together global experts and ambitious students to explore the intersection
-                            of Signal Processing and Artificial Intelligence.
+                            Experience a transformative three-day hybrid journey at MBITS Kothamangalam from March 6th
+                            to 8th, 2026. IRIS 2026 brings together global experts and ambitious students to explore the
+                            intersection of Signal Processing and Artificial Intelligence.
                         </p>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 max-w-xl mx-auto md:mx-0">
                             <div class="text-center">
@@ -600,29 +608,44 @@
             lantern.setAttribute('aria-label', 'Toggle dark theme');
         }
 
-        // Navbar Logo Alternating Animation
+        // Navbar Logo Alternating Animation (Desktop + Mobile)
         const navbarLogo = document.getElementById('navbar-logo');
+        const mobileLogo = document.getElementById('mobile-logo');
         const logos = [
-            { src: './logos/iris-ceal-blue-main.png', height: 'h-8' },
-            { src: './logos/IEEE SB CEAL Full - Dark.png', height: 'h-6' } // Smaller
+            { src: './logos/iris-ceal-blue-main.png', desktopHeight: 'h-8', mobileHeight: 'h-7' },
+            { src: './logos/IEEE SB CEAL Full - Dark.png', desktopHeight: 'h-6', mobileHeight: 'h-5' } // Smaller
         ];
         let currentLogoIndex = 0;
 
         function switchNavbarLogo() {
-            if (!navbarLogo) return;
+            // Switch desktop logo
+            if (navbarLogo) {
+                navbarLogo.classList.add('fade-out');
+                navbarLogo.classList.remove('fade-in');
+            }
 
-            // Add fade-out animation
-            navbarLogo.classList.add('fade-out');
-            navbarLogo.classList.remove('fade-in');
+            // Switch mobile logo
+            if (mobileLogo) {
+                mobileLogo.classList.add('fade-out');
+                mobileLogo.classList.remove('fade-in');
+            }
 
             setTimeout(() => {
-                // Switch logo
+                // Switch logo index
                 currentLogoIndex = (currentLogoIndex + 1) % logos.length;
                 const currentLogo = logos[currentLogoIndex];
-                navbarLogo.src = currentLogo.src;
 
-                // Update size and add fade-in
-                navbarLogo.className = `${currentLogo.height} filter brightness-0 fade-in`;
+                // Update desktop logo
+                if (navbarLogo) {
+                    navbarLogo.src = currentLogo.src;
+                    navbarLogo.className = `${currentLogo.desktopHeight} fade-in`;
+                }
+
+                // Update mobile logo
+                if (mobileLogo) {
+                    mobileLogo.src = currentLogo.src;
+                    mobileLogo.className = `${currentLogo.mobileHeight} fade-in`;
+                }
             }, 600); // Half of the 1.2s transition time
         }
 
@@ -672,17 +695,32 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // Parallax Effect with Smooth Transitions
+        // Parallax Effect with Smooth Transitions + Header Visibility
         let ticking = false;
         window.addEventListener('scroll', () => {
             if (!ticking) {
                 window.requestAnimationFrame(() => {
                     const scroll = window.pageYOffset;
                     const hero = document.querySelector('h1');
+                    const desktopHeader = document.querySelector('header.hidden.md\\:flex');
+                    const mobileHeader = document.querySelector('header.md\\:hidden');
+
+                    // Parallax effect
                     if (hero) {
                         hero.style.transition = 'transform 0.1s ease-out';
                         hero.style.transform = `translateY(${scroll * 0.15}px)`;
                     }
+
+                    // Hide headers when scrolling past hero section (approx 80vh)
+                    const heroHeight = window.innerHeight * 0.8;
+                    if (scroll > heroHeight) {
+                        if (desktopHeader) desktopHeader.style.opacity = '0';
+                        if (mobileHeader) mobileHeader.style.opacity = '0';
+                    } else {
+                        if (desktopHeader) desktopHeader.style.opacity = '1';
+                        if (mobileHeader) mobileHeader.style.opacity = '1';
+                    }
+
                     ticking = false;
                 });
                 ticking = true;
