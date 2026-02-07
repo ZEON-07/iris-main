@@ -52,16 +52,80 @@
                 </svg>
             </div>
 
+            <!-- Sakura Blossom Branch with Lanterns -->
+            <div class="sakura-branch-container">
+                <!-- Main Branch -->
+                <svg class="sakura-branch" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Branch path -->
+                    <path class="branch-main" d="M 50,50 Q 200,80 400,150 T 750,200" stroke="#3d2817" stroke-width="12"
+                        fill="none" stroke-linecap="round" />
+                    <path class="branch-sub" d="M 200,80 Q 250,120 300,180" stroke="#3d2817" stroke-width="8"
+                        fill="none" stroke-linecap="round" />
+                    <path class="branch-sub" d="M 400,150 Q 420,200 450,260" stroke="#3d2817" stroke-width="8"
+                        fill="none" stroke-linecap="round" />
+
+                    <!-- Sakura Blossoms -->
+                    <g class="blossom-cluster" data-delay="0">
+                        <circle cx="180" cy="90" r="18" fill="#ff4d2e" opacity="0.95" />
+                        <circle cx="195" cy="85" r="15" fill="#ff6347" opacity="0.9" />
+                        <circle cx="200" cy="100" r="16" fill="#ff7856" opacity="0.95" />
+                        <circle cx="185" cy="105" r="14" fill="#ff5c3d" opacity="0.95" />
+                        <circle cx="170" cy="95" r="15" fill="#ff4520" opacity="0.9" />
+                    </g>
+
+                    <g class="blossom-cluster" data-delay="0.3">
+                        <circle cx="320" cy="165" r="20" fill="#ff4d2e" opacity="0.95" />
+                        <circle cx="338" cy="158" r="17" fill="#ff6347" opacity="0.9" />
+                        <circle cx="345" cy="175" r="18" fill="#ff7856" opacity="0.95" />
+                        <circle cx="328" cy="182" r="16" fill="#ff5c3d" opacity="0.95" />
+                        <circle cx="310" cy="172" r="17" fill="#ff4520" opacity="0.9" />
+                    </g>
+
+                    <g class="blossom-cluster" data-delay="0.6">
+                        <circle cx="500" cy="185" r="22" fill="#ff4d2e" opacity="0.95" />
+                        <circle cx="520" cy="178" r="19" fill="#ff6347" opacity="0.9" />
+                        <circle cx="528" cy="196" r="20" fill="#ff7856" opacity="0.95" />
+                        <circle cx="510" cy="205" r="18" fill="#ff5c3d" opacity="0.95" />
+                        <circle cx="490" cy="195" r="19" fill="#ff4520" opacity="0.9" />
+                    </g>
+
+                    <g class="blossom-cluster" data-delay="0.9">
+                        <circle cx="650" cy="205" r="20" fill="#ff4d2e" opacity="0.95" />
+                        <circle cx="668" cy="200" r="17" fill="#ff6347" opacity="0.9" />
+                        <circle cx="675" cy="215" r="18" fill="#ff7856" opacity="0.95" />
+                        <circle cx="660" cy="222" r="16" fill="#ff5c3d" opacity="0.95" />
+                        <circle cx="645" cy="215" r="17" fill="#ff4520" opacity="0.9" />
+                    </g>
+                </svg>
+
+                <!-- Floating Petals for Wind Effect -->
+                <div class="floating-petals">
+                    <div class="petal" style="left: 15%; animation-delay: 0s;"></div>
+                    <div class="petal" style="left: 30%; animation-delay: 2s;"></div>
+                    <div class="petal" style="left: 45%; animation-delay: 4s;"></div>
+                    <div class="petal" style="left: 60%; animation-delay: 1s;"></div>
+                    <div class="petal" style="left: 75%; animation-delay: 3s;"></div>
+                    <div class="petal" style="left: 85%; animation-delay: 5s;"></div>
+                </div>
+
+                <!-- Hanging Lanterns -->
+                <div class="lantern" style="left: 25%; top: 15%;">
+                    <div class="lantern-body"></div>
+                    <div class="lantern-tassel"></div>
+                </div>
+
+                <div class="lantern" style="left: 75%; top: 28%;">
+                    <div class="lantern-body"></div>
+                    <div class="lantern-tassel"></div>
+                </div>
+            </div>
+
             <div class="container max-w-6xl relative z-10 text-center">
                 <div class="reveal-up">
 
                     <h1
                         class="text-5xl md:text-9xl mb-8 leading-tight tracking-tight text-[#1A1A1A] hero-title inline-block">
                         IRIS <span class="italic font-light">'26</span>
-                        <span class="kanji-reveal">
-                            <img src="./logos/IEEE SB CEAL Full - Dark.png" alt="CEAL IEEE Logo"
-                                class="inline-block h-2 md:h-5">
-                        </span>
                     </h1>
                     <div class="w-24 h-px bg-[#BC002D]/30 mx-auto mb-12"></div>
                     <p
@@ -256,30 +320,33 @@
                     <div class="poster-item active">
                         <img src="./images/bg-9.png" class="w-full h-full object-cover grayscale brightness-50">
                         <div class="absolute inset-0 flex flex-col justify-end p-8 text-white">
-                            <span class="text-[10px] tracking-widest uppercase mb-2">Technical Session</span>
-                            <h4 class="text-2xl font-serif italic">The Future of AI</h4>
-                            <div class="w-12 h-px bg-[#BC002D] mt-4"></div>
+
                         </div>
                     </div>
                     <!-- Poster 2 -->
                     <div class="poster-item next">
                         <img src="./images/bg-9.png" class="w-full h-full object-cover grayscale brightness-50">
                         <div class="absolute inset-0 flex flex-col justify-end p-8 text-white">
-                            <span class="text-[10px] tracking-widest uppercase mb-2">Networking</span>
-                            <h4 class="text-2xl font-serif italic">Student Meetup</h4>
-                            <div class="w-12 h-px bg-[#BC002D] mt-4"></div>
+
+
+
                         </div>
                     </div>
                     <!-- Poster 3 -->
                     <div class="poster-item far-right">
                         <img src="./images/bg-9.png" class="w-full h-full object-cover grayscale brightness-50">
+
+
+                    </div>
+                    <!-- Poster 1 -->
+                    <div class="poster-item active">
+                        <img src="./images/bg-9.png" class="w-full h-full object-cover grayscale brightness-50">
                         <div class="absolute inset-0 flex flex-col justify-end p-8 text-white">
-                            <span class="text-[10px] tracking-widest uppercase mb-2">Workshop</span>
-                            <h4 class="text-2xl font-serif italic">Signal Mastery</h4>
-                            <div class="w-12 h-px bg-[#BC002D] mt-4"></div>
+
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
 
