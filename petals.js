@@ -2,7 +2,7 @@ function createPetals() {
     const container = document.getElementById('petals-container');
     if (!container) return;
 
-    const count = 40;
+    const count = 60;
     for (let i = 0; i < count; i++) {
         const petal = document.createElement('div');
         petal.className = 'petal';
